@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Surpresa Musical para Gabriela</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a0a2b, #3a0c5e, #1a0a2b);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 200, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 100, 100, 0.1) 0%, transparent 40%);
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(10, 5, 20, 0.85);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff6b6b, #ffb142, #ff5252);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff9a9e, transparent);
+        }
+        
+        .message-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .message {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .message p {
+            margin-bottom: 20px;
+        }
+        
+        .message p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .message-container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 154, 158, 0.15) 0%, transparent 70%);
+        }
+        
+        .music-card {
+            background: rgba(30, 15, 50, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .album-art {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.3);
+            animation: rotateAlbum 20s linear infinite;
+        }
+        
+        @keyframes rotateAlbum {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .album-art::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/><circle cx="100" cy="100" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+        }
+        
+        .album-art::after {
+            content: "♪";
+            position: absolute;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .song-info {
+            margin-top: 20px;
+        }
+        
+        .song-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ff9a9e;
+        }
+        
+        .artist {
+            font-size: 1.25rem;
+            color: #fad0c4;
+            margin-bottom: 15px;
+        }
+        
+        .visualizer {
+            width: 100%;
+            height: 100px;
+            margin: 25px 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .bar {
+            width: 8px;
+            background: linear-gradient(to top, #ff9a9e, #fad0c4);
+            border-radius: 4px 4px 0 0;
+            animation: dance 1.4s infinite alternate;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+        
+        @keyframes dance {
+            0% { height: 20%; }
+            100% { height: calc(20% + 80% * var(--rnd)); }
+        }
+        
+        .autoplay-notice {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #fad0c4;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            opacity: 0;
+            font-size: 1.5rem;
+            animation: floatHeart 8s linear forwards;
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .album-art {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .song-title {
+                font-size: 1.5rem;
+            }
+            
+            .message {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <h1>Clica pra soltar o som DJ Gabi...</h1>
+        
+        <div class="message-container">
+            <div class="message">
+                <p>Quando tirou essa foto não sabia o bem que fariamos um para o outro, a fogo e o gelo, o racional e a emocional, nós nos completamos e juntos somos mais fortes, escolhi essa música com cuidado já faz um tempo e esperei esse dia para dividir contigo.
+
+				<p>Esse é só o começo de muitos desafios, mas com cada desafio vem o aprendizado e é disso que a vida se trata, de dor, tristeza, agônia e as vezes parece impossível superar a avalanche de adversidades e que todo o mundo nos quer no chão, mas então em um piscar de olhos, percebemos que nossos problemas são tão pequenos, que eu sou seu porto seguro, que você é o navio que vou navegar e que em nosso navio Deus está presente, então toda tempestade se acalma e sobra um casal mais forte.</div>
+        </div>
+        
+        <div class="music-card">
+            <div class="album-art"></div>
+            
+            <div class="song-info">
+                <div class="song-title">Sunkissed</div>
+                <div class="artist">NVTHVN</div>
+            </div>
+            
+            <div class="visualizer" id="visualizer"></div>
+            
+            <div class="autoplay-notice" id="autoplayNotice">
+                Link da música:<br><br>
+                https://open.spotify.com/intl-pt/track/6InVPJLNbia2XBqDUVqxWy?si=cba611f7f5ae451f
+            </div>
+        </div>
+        
+        <div class="signature">Vou estar lhe esperando no altar para um futuro incrível!</div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="sunkissed.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script>
+        // Configurações iniciais
+        const music = document.getElementById('backgroundMusic');
+        const visualizer = document.getElementById('visualizer');
+        const autoplayNotice = document.getElementById('autoplayNotice');
+        const heartsContainer = document.getElementById('hearts');
+        
+        // Criar visualizador de áudio
+        for (let i = 0; i < 40; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.setProperty('--i', i);
+            bar.style.setProperty('--rnd', Math.random());
+            visualizer.appendChild(bar);
+        }
+        
+        // Atualizar visualizador
+        function updateVisualizer() {
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                bar.style.setProperty('--rnd', Math.random());
+            });
+            
+            // Criar corações flutuantes
+            if (Math.random() > 0.7) {
+                createFloatingHeart();
+            }
+        }
+        
+        // Criar coração flutuante
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heartsContainer.appendChild(heart);
+            
+            // Remover após animação
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        // Técnica para iniciar a música automaticamente
+        function startMusic() {
+            // Mostrar aviso de autoplay
+            autoplayNotice.style.display = 'block';
+            
+            // Tentar reproduzir imediatamente
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Se falhar, mostrar instruções para o usuário
+                    autoplayNotice.innerHTML = 'A música não pôde iniciar automaticamente<br>Clique em qualquer lugar da página para começar';
+                });
+            }
+        }
+        
+        // Iniciar música quando a página carregar
+        window.addEventListener('DOMContentLoaded', () => {
+            // Iniciar música com pequeno atraso para melhor experiência
+            setTimeout(startMusic, 1500);
+            
+            // Iniciar animações
+            setInterval(updateVisualizer, 300);
+        });
+        
+        // Se tudo falhar, permitir que o usuário inicie manualmente
+        document.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                autoplayNotice.style.display = 'none';
+            }
+        });
+        
+        // Iniciar quando tocar na tela (para mobile)
+        document.addEventListener('touchstart', () => {
+            if (music.paused) {
+                music.play();
+                autoplayNotice.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
